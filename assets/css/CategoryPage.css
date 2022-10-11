@@ -1,0 +1,8 @@
+.showcase-wrapper{
+    display: flex;
+    flex-direction: column;
+}
+
+.showcase-content{
+    max-width: 80vw;
+}
