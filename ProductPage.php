@@ -1,3 +1,10 @@
+<?php
+    @include 'config.php';
+    $id = $_GET["id"];
+    echo $id;
+    setlocale(LC_MONETARY, 'en_IN');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -8,51 +15,62 @@
         <link rel="stylesheet" href="./assets/css/ProductPage.css">
     </head>
     <body>
-        <div class="container">
-            <div class="wrapper">
+    <?php
+        
+
+        $select = mysqli_query($conn, "SELECT * FROM products where id='".$id."'");
+        $rows = mysqli_num_rows($select);
+        $row = array();
+        echo "Rows ".$rows;
+        if($rows == 1){
+            $row = mysqli_fetch_assoc($select);
+        }
+      ?>
+    <div class="container">
+            <div class="wrapper" id="<?php echo $row["Id"] ?>">
                     <div class="product-box">
                         <div class="all-images">
                                 <div class="small-images">
-                                    <img src="images\Adata-XPG-Starker-Air-ARGB-ATX-Cabinet-White 1.webp" onclick="clickimg(this)">
-                                    <img src="images\Adata-XPG-Starker-Air-ARGB-ATX-Cabinet-White-2.webp" onclick="clickimg(this)">
-                                    <img src="images\Adata-XPG-Starker-Air-ARGB-ATX-Cabinet-White-3.webp" onclick="clickimg(this)">
+                                    <img id="image1" src="<?php echo 'http://localhost/quickshop/uploaded_img/'.$row["image"] ?>" onclick="clickimg(this)">
+                                    <img src="<?php echo 'http://localhost/quickshop/uploaded_img/'.$row["image2"] ?>" onclick="clickimg(this)">
+                                    <img src="<?php echo 'http://localhost/quickshop/uploaded_img/'.$row["image3"] ?>" onclick="clickimg(this)">
                                 </div>
                         <div class="main-images">
-                            <img src="images\Adata-XPG-Starker-Air-ARGB-ATX-Cabinet-White-3.webp" id="imagebox">
+                            <img src="<?php echo 'http://localhost/quickshop/uploaded_img/'.$row["image"] ?>"  id="imagebox">
                         </div>
                         </div>
                     </div>
                     <div class="text">
                             <div class="content">
                                 <p class="brand">Brand:APPLE</p>
-                                <h2>APPLE IPHONE 13 (WHITE,128)</h2>
+                                <h2 id="name"><?php echo $row["name"] ?></h2>
                                 <div class="review">
                                     <span>4.7 </span>
                                     <span class="fa fa-star"></span>
                                 </div>
                                 <div class="price-box">
-                                    <p class="price">&#8377; 79,999</p>
-                                    <strike>&#8377; 84,999 </strike>
+                                    <p price='<?php echo $row["price"] ?>' id="price" class="price">&#8377; <?php echo $row["price"] ?></p>
                                 </div>
                                 <p>QUANTITY
-                                    <select name="quantity">
+                                    <select id="quantity" name="quantity">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
                                         <option value="4">4</option>
                                         <option value="5">5</option>
-                                    </select> </p>
-                                <button>
+                                    </select> 
+                                </p>
+                                <button id="addToCart">
                                     <span class="fa fa-shopping-cart"></span>
                                         ADD TO CART
                                 </button>
-                                <button class="buy">
+                                <!-- <button class="buy" >
                                     <span class="fa fa-shopping-cart"></span>
                                     BUY NOW
-                                </button>
+                                </button> -->
                                 <h4 id="descriptions">Description</h4>
                                 <p id="desc">
-                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere a in reprehenderit unde, voluptate dolorem hic eius optio autem cumque illo incidunt laudantium nulla quae placeat sequi facilis aliquid velit.
+                                <?php echo $row["description"] ?>
                                 </p>
 
                               
@@ -60,15 +78,48 @@
                     </div>
             </div>
         </div>
+    </body>
+    <script>
+        const btnCart = document.querySelector("#addToCart");
+        btnCart.addEventListener("click",e => {
+            e.preventDefault();
+            const productId = document.querySelector(".wrapper").id;
+            const image = document.querySelector("#image1").src
+            const price = parseInt(document.querySelector("#price").getAttribute("price"));
+            const prodName = document.querySelector("#name").innerText;
+            const quantity = document.querySelector("#quantity").value;
+            const data = new FormData();
+            let cookie = decodeURIComponent(document.cookie).split("=")[1].split(";");
+            const userId = cookie[0];
+            const name = cookie[1];
+            const email = cookie[2];
+            const pass = cookie[3];
 
+            data.append("type","addToCart");
+            data.append("userId", userId);
+            data.append("productId", productId);
+            data.append("quantity", quantity);
+            data.append("name",prodName);
+            data.append("price",price);
+            data.append("image",image);
 
+            fetch("http://localhost/quickshop/cartHandler.php",{
+                method: "POST",
+                credentials: 'same-origin', 
+                headers: {'X-Requested-With': 'XMLHttpRequest'},
+                body: data
+            }).then((err, data) => {
+                location.href = "http://localhost/quickshop/cart.php";
 
-        <script>
-                function clicking(smallImg){
+            });
+            
+
+            // data.append("productId", produ)
+        });
+                function clickimg(smallImg){
                     var fullImg = document.getElementById("imagebox")
                     fullImg.src = smallImg.src
        
                 } 
         </script>    
-    </body>
 <html>

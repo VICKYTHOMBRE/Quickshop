@@ -120,7 +120,7 @@
    
     <!-- <a href="#" class="category-btn">Here are your list of prebuilded office or student pc.</a> -->
     <button class="btnShowAll">
-      <a href="prebuildedoffice.php">Show All Office / Student PC</a>
+      <a href="category.php?category=Office">Show All Office / Student PC</a>
     </button>
   </div>
 </div>
@@ -137,9 +137,9 @@
     <p>Thw use of minimum 32 gb of ram is necessary and that can be in dual ram configuration for faster processing.</p>
     <p>Storing data must be done in nvme ssd which is faster to operate and can manage all type of data with less period of time.</p>  
     <button class="btnShowAll">
-      <a href="prebuildegamingpc.php">Show All Gaming / Production PC</a>
+      <a href="category.php?category=Gaming">Show All Gaming / Production PC</a>
     </button>
-    <a href="#" class="category-btn"></a>
+    <a href="prebuildedgaming.php" class="category-btn"></a>
   </div>
 </div>
 <!-- Footer -->

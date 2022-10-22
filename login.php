@@ -19,6 +19,10 @@
         $select = mysqli_query($conn, "SELECT * FROM users where email='$user_email' and password='$user_password'");
         // $row = mysqli_fetch_assoc($select);
         if($select->num_rows > 0){
+            $row = mysqli_fetch_assoc($select);
+            $cookie_name = "user";
+            $cookie_value = $row["id"].";".$row["name"].";".$row["email"].";".$row["password"];
+            setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); 
             echo "<script>alert('logged in')</script>";
         }else{
             echo "<script>alert('Invalid email / password')</script>";

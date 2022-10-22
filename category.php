@@ -34,6 +34,9 @@
     .product-minimal .showcase-content{
       max-width: 80vw;
     }
+    .showcase{
+      cursor: pointer;
+    }
   </style>
 </head>
 
@@ -58,7 +61,7 @@
         $select = mysqli_query($conn, "SELECT * FROM products where category='".$category."'");
         if(mysqli_num_rows($select) > 0){
           while($row = mysqli_fetch_assoc($select)) {
-            echo '<div class="showcase">';
+            echo '<div class="showcase" id="'.$row["Id"].'">';
             echo '<a class="showcase-img-box">';
             echo '<img class="showcase-img" width="70" src="http://localhost/quickshop/uploaded_img/'.$row['image'].'">';
             echo '</a>';
@@ -93,5 +96,14 @@
 
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script>
+    const products = document.querySelectorAll(".showcase");
+    console.log(products);
+    products.forEach(product => {
+      product.addEventListener("click", e => {
+        window.open("http://localhost/quickshop/productpage.php?id=" + product.id);
+      })
+    })
+  </script>
 
 </body>

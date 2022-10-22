@@ -83,7 +83,7 @@
     
 
       <button class="action-btn">
-        <ion-icon name="bag-handle-outline"></ion-icon>
+        <a href="http://localhost/quickshop/cart.php"><ion-icon name="bag-handle-outline"></ion-icon></a>
         <span class="count">0</span>
       </button>
 
