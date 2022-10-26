@@ -60,7 +60,7 @@
               category: "category",
               price: "price"
           },
-              {
+            {
               imgUrl: "",
               title: "op",
               category: "category",

@@ -138,18 +138,6 @@
 
       <li class="menu-category">
         <a href="category.php?category=processor" class="menu-title">PROCESSOR</a>
-
-        <ul class="dropdown-list">
-
-          <li class="dropdown-item">
-            <a href="#">AMD</a>
-          </li>
-
-          <li class="dropdown-item">
-            <a href="#">INTEL</a>
-          </li>
-
-        </ul>
       </li>
 
       <li class="menu-category">

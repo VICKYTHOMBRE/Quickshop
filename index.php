@@ -180,11 +180,7 @@
 
               <h2 class="banner-title">PREBUILDED GAMING PC</h2>
 
-              <p class="banner-text">
-                starting at RS- <b>79,000</b>.00
-              </p>
-
-              <a href="#" class="banner-btn">Shop now</a>
+              <a href="category.php?category=Gaming" class="banner-btn">Shop now</a>
 
             </div>
 
@@ -200,31 +196,7 @@
 
               <h2 class="banner-title">PREBUILDED OFFICE PC</h2>
 
-              <p class="banner-text">
-                starting at RS- <b>60,000</b>.00
-              </p>
-
-              <a href="#" class="banner-btn">Shop now</a>
-
-            </div>
-
-          </div>
-
-          <div class="slider-item">
-
-            <img src="./assets/images/banner-3.jpg" alt="new pc setup" class="banner-img">
-
-            <div class="banner-content">
-
-              <p class="banner-subtitle">Sale Offer</p>
-
-              <h2 class="banner-title">NEW PC SETUP</h2>
-
-              <p class="banner-text">
-                starting at RS-; <b>1,00,000</b>.00
-              </p>
-
-              <a href="#" class="banner-btn">Shop now</a>
+              <a href="category.php?category=Office" class="banner-btn">Shop now</a>
 
             </div>
 
