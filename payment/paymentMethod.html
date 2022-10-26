@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="payment.css">
+</head>
+<body>
+    <h2>Select a payment method</h2>
+    
+    <div class="container">
+
+            <label for="fname"><input type="radio" onclick="payment.htm" >Pay with Debit/Credit/ATM Cards</label>
+            <img src="visa.png" width="50" alt="">
+            <img src="mastercard.svg" width="40" alt="">
+            <img src="rupay.png" width="80" alt="">
+            
+            <label for="cname">Name on Card</label>
+            <input type="text" id="cname" name="cardname" placeholder="">
+            <label for="ccnum">Credit card number</label>
+            <input type="text" id="ccnum" name="cardnumber" placeholder="aaaa-bbbb-cccc-dddd">
+            <label for="expmonth">Exp Month</label>
+            <input type="text" id="expmonth" name="expmonth" placeholder="">
+            <div class="row">
+              <div class="col-50">
+                <label for="expyear">Exp Year</label>
+                <input type="text" id="expyear" name="expyear" placeholder="0000">
+              </div>
+            <div class="col-50">
+                <label for="cvv">CVV</label>
+                <input type="text" id="cvv" name="cvv" placeholder="352">
+            </div>
+            </div>
+            <br>
+        <div class="col-50">
+            <label for="expyear"> <input type="radio" id="NBanking" name="NBanking" placeholder="0000"> Net Banking</label>
+            <select name="Nbanking" id="Nbanking">
+                <option value="HDFC">HDFC</option>
+                <option value="ABANK">AXIS BANK</option>
+                <option value="SBI">SBI</option>
+                <option value="KBANK">KOTAK BANK</option>
+                <option value="ICICI">ICICI</option>
+            </select>
+        </div>
+        <br>
+        <br>
+        
+        <div class="upi">
+        <div class="col-50">
+            <label for="cvv"><input type="radio" id="UPI" name="UPI" placeholder="">UPI</label>
+            <select name="Nbanking" id="Nbanking">
+                <option value="GPay"> GPay <a href="https://pay.google.com/about/"> </option>
+                <option value="PayTM">PayTM</option>
+                <option value="PhonePay">PhonePay</option>
+                <option value="AirtelBank">AirtelBank</option>
+                <option value="AmazonPay">AmazonPay</option>
+            </select>
+            <input type="text" id="UPI" name="UPI" placeholder="Ex: mobileNumber@upi">
+
+        </div>
+        </div> 
+        <br>
+
+        <div class="upi">
+            <div class="col-50">
+                <label for="cvv"><input type="radio" id="COD" name="COD" placeholder="">Cash On Delivery</label>
+        </div>
+        </div> 
+        <br>
+        <button type="submit" form="form1" value="Submit" > <a href="https://pay.google.com/about/"> Submit </button>
+
+    </div>
+
+
+</body>
+</html>
