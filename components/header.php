@@ -1,5 +1,16 @@
 <header>
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+<style>
+  #user{
+    font-size: 20px;
+  }
+  .user{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+</style>
 <div class="header-top">
 
   <div class="container">
@@ -65,18 +76,37 @@
 
     <div class="header-search-container">
 
-      <input type="search" name="search" class="search-field" placeholder="Enter your product name...">
+      <input type="search" name="search" id="searchBar" class="search-field" placeholder="Enter your product name...">
 
-      <button class="search-btn">
+      <button id="btnSearch" class="search-btn">
         <ion-icon name="search-outline"></ion-icon>
       </button>
-
+      <script>
+        const searchBar = document.querySelector("#searchBar");
+        const btnSearch = document.querySelector("#btnSearch");
+        btnSearch.addEventListener("click", e => {
+          // alert(searchBar.value);
+          location.href = "search.php?search="+searchBar.value
+        })
+      </script>
     </div>
 
     <div class="header-user-actions">
 
-      <button class="action-btn">
-        <a href="login.php"><ion-icon id="icon"  name="person-outline"></ion-icon></a>
+      <button class="action-btn user">
+        <?php
+          if(isset($_COOKIE["user"])){
+            echo "<span id='user'>".explode(";",urldecode($_COOKIE["user"]))[1]."</span>";
+
+              echo '<i id="logout" class="bi bi-box-arrow-right"></i>';
+          }else{
+            echo '<a href="login.php" class="menu-title">Login</a>
+            <ul style="margin-left: 138px;" class="">
+          </ul>
+            ';
+          }
+        ?>
+
         
       </button>
 
@@ -84,7 +114,7 @@
 
       <button class="action-btn">
         <a href="http://localhost/quickshop/cart.php"><ion-icon name="bag-handle-outline"></ion-icon></a>
-        <span class="count">0</span>
+        <!-- <span class="count">0</span> -->
       </button>
 
     </div>
@@ -181,3 +211,14 @@
 
 
 </header>
+
+<script>
+  const logout = document.querySelector("#logout");
+  logout.addEventListener("click", e => {
+    e.preventDefault();
+    document.cookie = "user=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+    alert("Logged Out");
+    location.reload();
+    console.log(logout);
+  })
+</script>

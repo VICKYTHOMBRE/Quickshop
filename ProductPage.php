@@ -1,7 +1,7 @@
 <?php
     @include 'config.php';
     $id = $_GET["id"];
-    echo $id;
+    // echo $id;
     setlocale(LC_MONETARY, 'en_IN');
 ?>
 
@@ -21,7 +21,7 @@
         $select = mysqli_query($conn, "SELECT * FROM products where id='".$id."'");
         $rows = mysqli_num_rows($select);
         $row = array();
-        echo "Rows ".$rows;
+        // echo "Rows ".$rows;
         if($rows == 1){
             $row = mysqli_fetch_assoc($select);
         }
@@ -42,7 +42,6 @@
                     </div>
                     <div class="text">
                             <div class="content">
-                                <p class="brand">Brand:APPLE</p>
                                 <h2 id="name"><?php echo $row["name"] ?></h2>
                                 <div class="review">
                                     <span>4.7 </span>

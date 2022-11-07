@@ -23,7 +23,7 @@
             $cookie_name = "user";
             $cookie_value = $row["id"].";".$row["name"].";".$row["email"].";".$row["password"];
             setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); 
-            echo "<script>alert('logged in')</script>";
+            echo "<script>alert('logged in');location.href='index.php'</script>";
         }else{
             echo "<script>alert('Invalid email / password')</script>";
         }
